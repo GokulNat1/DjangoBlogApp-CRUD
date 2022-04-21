@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,13 +21,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-v+ypk)dg8+_cl5&2b+zq7__@w@lyp2v=j3p$zdrx3jk_#2_j+x'
+
+  
+SECRET_KEY='62eea40abe18a8f1f8ad410c011c241082ea2c538e0d975f1843a6d09d5fe1fcd9b47d13fe6fb4da'
+   
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['44.199.115.66',
+                '.fadedstranger.com',]
 
+STATIC_URL = '/static/'
+STATIC_ROOT = '/var/www/fadedstranger.com/static'; 
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # Application definition
 
@@ -38,12 +46,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main.apps.MainConfig',
-    'crispy_forms',
-    'crispy_bootstrap5'
-]
-CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+    
 
-CRISPY_TEMPLATE_PACK = "bootstrap5"
+]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -82,7 +89,7 @@ WSGI_APPLICATION = 'website.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str( BASE_DIR / 'db.sqlite3'),
     }
 }
 
@@ -121,7 +128,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
